@@ -1,0 +1,27 @@
+/* Lined Tabs */
+.lined-tabs {
+    float: left;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+    width: 100%; }
+    .lined-tabs li {
+      float: left;
+      margin: 0 15px;
+      line-height: 32px; }
+      .lined-tabs li a {
+        color: #6c757d; text-decoration: none;}
+      .lined-tabs li.active {
+        border-bottom: 2px solid #0A0080; }
+        .lined-tabs li.active a {
+          color: #0A0080;
+          font-weight: 500; }
+      .lined-tabs li:hover, .lined-tabs li:focus {
+        border-bottom: 2px solid #0A0080; }
+        .lined-tabs li:hover a, .lined-tabs li:focus a {
+          color: #0A0080; }
+    .lined-tabs.modal-tabs li {
+      margin: 0 10px;
+      font-size: 13px;
+      line-height: 24px; }

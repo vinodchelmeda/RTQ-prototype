@@ -1,0 +1,19 @@
+.btn{
+    padding: 5px;
+    box-shadow: none;
+    border-width: 1px;
+    border-radius: 3px;
+    &:hover{
+        cursor: pointer;
+    }
+    &.btn-primary {
+        background:$primary-color;
+        border-color: $primary-color-dark;
+        color: $primary-light;
+    }
+    &.btn-secondary {
+        background:$white;
+        border-color: $gray-600;
+        color: $gray-900;
+    }
+}

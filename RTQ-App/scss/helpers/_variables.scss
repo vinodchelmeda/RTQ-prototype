@@ -1,0 +1,70 @@
+/*Basic*/
+// $fontfamily:'Lato', sans-serif;
+$fontfamily:'Open Sans', sans-serif;
+
+/*Layout Related*/
+$navcolor:#1f1942;
+$nav-activecolor:darken($navcolor, 10%);
+$navtextcolor:#e4e4e4;
+$navbar : 18%;
+$navbarmini: 56px;
+
+
+/*Shadows*/
+$navshadow : 0px 1px 10px 1px rgba(175, 175, 175, 0.46);
+
+/*Fonts*/
+$font-12:12px;
+$font-14:14px;
+$font-16:16px;
+$font-18:18px;
+
+/*Icon Fonts*/
+$icon-12:12px;
+$icon-14:14px;
+$icon-16:16px;
+$icon-18:18px;
+
+/*Font Weights*/
+$weight-300:300;
+$weight-400:400;
+$weight-500:500;
+$weight-600:600;
+$weight-700:700;
+/*Colors*/
+$primary-color:#2f419b;
+$primary-color-dark:#162571;
+$primary-light:#eef5f9;
+$gray:#eeeeee;
+//
+// Color system
+//
+
+$white:  #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:  #000 !default;
+$linkcolor:#007bff;
+
+$imp:!important;
+
+
+// grid variables
+$grid__cols: 12;
+$grid-gap: 0.8rem;
+$grid-columnsset: (
+     //   '': 0,
+        -xs: 360px,
+        -sm: 480px,
+        -md: 720px,
+        -lg: 960px,
+        -xl: 1160px,
+      
+);

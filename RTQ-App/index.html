@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>RTQ</title>
+    <link rel="stylesheet" href="css/styles.css" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+          // Menu Function
+          $(".menu-toggle").click(function(){
+            var totalbody = $("body");
+            if(totalbody.hasClass("menu-collapsed")){
+              totalbody.removeClass("menu-collapsed");
+            }
+            else{
+              totalbody.addClass("menu-collapsed");
+            }
+          });
+           // Submenu
+           $(".icon-down-open").click(function(){
+                
+                //var submenu = $(".has-submenu"); 
+                   var submenu = $(this).parent(".has-submenu");
+                if(submenu.hasClass("open")){
+                    submenu.removeClass("open");
+                }
+                else{
+                    submenu.addClass("open");
+                    submenu.siblings().removeClass("open");
+                }
+            });
+             // User Menu 
+           $(".user-dropdown").click(function(){  
+                var menubtn = $(".user-dropdown"); 
+                if(menubtn.hasClass("open")){
+                    menubtn.removeClass("open");
+                }
+                else{
+                    menubtn.addClass("open");
+                }
+            });
+             // Search display
+             $(".search-action").click(function(){
+                var headersearch = $(".header-searchbox"); 
+                if(headersearch.hasClass("showsearch")){
+                   //  headersearch.addClass("slideOutUp");
+                  //  headersearch.removeClass("showsearch").delay(15000);
+                    headersearch.addClass("slideOutUp").delay(1500).queue(function(){
+                        headersearch.removeClass("showsearch").dequeue();
+                    });
+                }
+                else{
+                     headersearch.removeClass("slideOutUp");
+                    headersearch.addClass("showsearch animated faster slideInDown");
+                     
+                      $("#headersearch").focus();
+                }
+            });
+          });
+      </script>
+
+<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="default menu-collapsed">
+  <nav> 
+    <div class="logo-space">
+      <img src="images/logo.png">
+    </div>
+    <ul class="main-menu" id="loadpage">
+      <!-- <li><a href="javascript:void(0)" id="dashboard"><i class="icon-pie-chart"></i> <span>Dashboard</span></a></li> -->
+      <li  class="has-submenu"><a href="javascript:void(0)" id="contentManagement"><i class="icon icon-text-file2"></i> <span>  Content Management </span> 
+                 </a>   <i class="icon-down-open"></i>
+                  <div class="divsubmenu">
+                  <ul class="submenu animated faster slideInDown">
+                      <li class="active"><a href="javascript:void(0)" id="contentManagement" aria-label="Content Management"> Documents</a></li>
+                      <li><a href="#" id="cards" aria-label="Content Management">Inbound Records </a></li>
+                      <li><a href="#" id="cardactions" aria-label="Content Management">Extracted Content </a></li>                      
+                  </ul>
+                      </div>
+              </li>
+              <li class="has-submenu"><a href="javascript:void(0)" id="submissionmanagement"><i class="icon icon-flow-tree2"></i> <span>  Submission Management </span> 
+              </a>   <i class="icon-down-open"></i>
+               <div class="divsubmenu">
+               <ul class="submenu animated faster slideInDown">
+                   <li><a href="javascript:void(0)" id="hainteractions" aria-label="Submission Management"> HA Interactions</a></li>
+                   <li><a href="#" id="obligation" aria-label="Submission Management"> Obligation</a></li>
+                   <li><a href="#" id="commitment" aria-label="Submission Management">Commitment </a></li>                      
+               </ul>
+                   </div>
+           </li>
+           <li class="has-submenu"><a href="javascript:void(0)" id="compliance"><i class="icon icon-interface"></i> <span>  Compliance </span> 
+           </a>   <i class="icon-down-open"></i>
+            <div class="divsubmenu">
+            <ul class="submenu animated faster slideInDown">
+                <li><a href="javascript:void(0)" id="xEVMPD" aria-label="Compliance"> xEVMPD </a></li>
+                <li><a href="#" id="prm" aria-label="Compliance"> PRM </a></li>
+                <li><a href="#" id="idmprecord" aria-label="Compliance">IDMP Record </a></li>  
+                <li><a href="#" id="idmpmessages" aria-label="Compliance">IDMP Message </a></li>                    
+            </ul>
+                </div>
+        </li>
+        <li class="has-submenu"><a href="javascript:void(0)" id="reports"><i class="icon icon-file-time"></i> <span>  Reports </span> 
+        </a>   <i class="icon-down-open"></i>
+         <div class="divsubmenu">
+         <ul class="submenu animated faster slideInDown">
+             <li><a href="javascript:void(0)" id="standardreport" aria-label="Standard Report"> Standard Report </a></li>
+             <li><a href="#" id="userdefined" aria-label="User Defined"> User Defined </a></li>
+             <li><a href="#" id="dynamicreports" aria-label="Dynamic Reports"> Dynamic Reports </a></li>                     
+         </ul>
+             </div>
+     </li>
+     <li class="has-submenu"><a href="javascript:void(0)" id="admin"><i class="icon icon-settings"></i> <span>  Admin </span> 
+     </a>   <i class="icon-down-open"></i>
+      <div class="divsubmenu">
+      <ul class="submenu animated faster slideInDown">
+          <li class="dropdown"><a href="javascript:void(0)" id="security" aria-label="Security"> Security </a>
+              
+            
+          </li>
+          <li><a href="#" id="integration" aria-label="Integration"> Integration </a></li>
+          <li><a href="#" id="notification" aria-label="Notification"> Notification </a></li>   
+          <li class="dropdown"><a href="#" id="terminologies" aria-label="Terminologies"> Terminologies </a>
+           
+          </li> 
+          <li><a href="#" id="systemparameters" aria-label="System Parameters"> System Parameters  </a></li>
+          <li><a href="#" id="Lifecycle" aria-label="Lifecycle"> Lifecycle </a></li>  
+          <li><a href="#" id="Workflows" aria-label="Workflows"> Workflows </a></li>                   
+      </ul>
+
+      
+          </div>
+  </li>
+      
+    </ul>
+    <a href="javascript:void(0)" class="menu-toggle"><i class="icon-chevron-left-1"></i> <span>Collapse panel</span></a>
+  </nav>
+
+<content>
+  <header>
+    <!-- <h1 id="pageheading"> Documents</h1> -->
+<!--<select class="page-navigation">
+  <option>Dashboard</option>
+  <option>Page 1</option>
+  <option>Page 1</option>
+</select>-->
+     <!-- <div class="separator"></div> -->
+   
+    
+      <div class="row">
+        <div class="col-2"><fieldset  class="field-container"><input  type="text" placeholder="Search" class="field"><div  class="icons-container"><div  class="icon icon-search"></div><div  class="icon-close"></div></div></fieldset></div>
+        <div class="col-4"></div>
+        <div class="col-2">
+          
+        </div>
+        <div class="col-4">
+
+        
+          
+
+          <div class="user-dropdown">
+            <div class="menu-fade"></div>
+              <span>Vinod Chelmeda  <!-- <img src="images/user.jpg"> --> <span class="circle"> VC </span><i class="icon-down-open"></i></span>
+            <ul>
+                <li><i class="icon-user2"></i>My Profile</li>
+                <li><i class="icon-cog"></i>Settings</li>
+                <li><i class="icon-power-1"></i>Logout</li>
+            </ul>
+        </div>
+        <i class="icon-view-tile top-icons top-icons">  </i>
+
+        <i class="icon-notifications-outline top-icons">  </i>
+        </div>
+      </div>
+      
+
+
+    
+     
+</header>
+<div class="header-searchbox search-action">
+  <input type="text" id="headersearch" placeholder="Search and press enter" />
+  <i class="icon-close-round"></i>
+</div>
+  <div class="title-bar">
+
+  </div>
+  <div class="content-area">
+    <div class="container">
+   
+  <div class="row">
+    <div class="col-12">
+      <div class="card m-t-10">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 p-0">
+              
+              
+              
+              <div class="content-pageheader">
+                <div class="breadcrumbs">
+                  <!-- <a href="#" class="page-backbtn"> 
+                    <i class="icon-chevron-left-1"></i>
+                  </a> -->
+                  <p> Admin &gt; Security &gt;  User Details </p>
+                </div>
+                <div class="page-headings">
+                    <h4>User Details</h4>
+                    
+                </div>
+            </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 p-0">
+              <ul class="lined-tabs">
+                  <li class="active"><a href="javascript:void(0)" id="subscribetabbtn">Users</a></li>
+                  <li><a href="javascript:void(0)" id="allsubscribetabbtn">Roles</a></li>
+                  <li><a href="javascript:void(0)" id="grouptabbtn">User Groups</a></li>
+                  <li><a href="javascript:void(0)" id="sentcommunicationstabbtn">Access Control </a></li>
+              </ul>
+          </div>
+        </div> 
+        <div class="row m-t-10">
+          <div class="col-md-12">
+            <table>
+              <tr>
+                <th class="header"> &nbsp; </th>
+                <th class="header">Record ID</th>
+                <th class="header">IR Record ID</th>
+                <th class="header">Record Type</th>
+                <th class="header">Lifecycle</th>
+                <th class="header">Product</th>
+                <th class="header">Topic</th>
+                <th class="header">Class</th>
+                <th class="header">Type</th>
+              </tr>
+             <tr>
+              <td> <input type="radio"> </td>
+              <td> <a href="form-view.html">EXR-0000001</a> </td>
+              <td> IR-0000001</td>
+              <td> System</td>
+              <td> Ext Standard Lifecycle</td>
+              <td> Product Name1 </td>
+              <td> Initial Query </td>
+              <td> EU </td>
+              <td> HA Interations </td>
+             </tr>
+             <tr>
+              <td> <input type="radio"> </td>
+              <td> <a href="form-view.html">EXR-0000001</a> </td>
+              <td> IR-0000001</td>
+              <td> System</td>
+              <td> Ext Standard Lifecycle</td>
+              <td> Product Name1 </td>
+              <td> Initial Query </td>
+              <td> EU </td>
+              <td> HA Interations </td>
+             </tr>
+             <tr>
+              <td> <input type="radio"> </td>
+              <td> <a href="form-view.html">EXR-0000001</a>  </td>
+              <td> IR-0000001</td>
+              <td> System</td>
+              <td> Ext Standard Lifecycle</td>
+              <td> Product Name1 </td>
+              <td> Initial Query </td>
+              <td> EU </td>
+              <td> HA Interations </td>
+             </tr>
+             <tr>
+              <td> <input type="radio"> </td>
+              <td> <a href="form-view.html">EXR-0000001</a> </td>
+              <td> IR-0000001</td>
+              <td> System</td>
+              <td> Ext Standard Lifecycle</td>
+              <td> Product Name1 </td>
+              <td> Initial Query </td>
+              <td> EU </td>
+              <td> HA Interations </td>
+             </tr>
+             <tr>
+              <td> <input type="radio"> </td>
+              <td> <a href="form-view.html">EXR-0000001</a>  </td>
+              <td> IR-0000001</td>
+              <td> System</td>
+              <td> Ext Standard Lifecycle</td>
+              <td> Product Name1 </td>
+              <td> Initial Query </td>
+              <td> EU </td>
+              <td> HA Interations </td>
+             </tr>
+             <tr>
+              <td> <input type="radio"> </td>
+              <td> <a href="form-view.html">EXR-0000001</a>  </td>
+              <td> IR-0000001</td>
+              <td> System</td>
+              <td> Ext Standard Lifecycle</td>
+              <td> Product Name1 </td>
+              <td> Initial Query </td>
+              <td> EU </td>
+              <td> HA Interations </td>
+             </tr>
+             <tr>
+              <td> <input type="radio"> </td>
+              <td> <a href="form-view.html">EXR-0000001</a>  </td>
+              <td> IR-0000001</td>
+              <td> System</td>
+              <td> Ext Standard Lifecycle</td>
+              <td> Product Name1 </td>
+              <td> Initial Query </td>
+              <td> EU </td>
+              <td> HA Interations </td>
+             </tr>
+             <tr>
+              <td> <input type="radio"> </td>
+              <td> <a href="form-view.html">EXR-0000001</a>  </td>
+              <td> IR-0000001</td>
+              <td> System</td>
+              <td> Ext Standard Lifecycle</td>
+              <td> Product Name1 </td>
+              <td> Initial Query </td>
+              <td> EU </td>
+              <td> HA Interations </td>
+             </tr>
+             <tr>
+              <td> <input type="radio"> </td>
+              <td> <a href="form-view.html">EXR-0000001</a>  </td>
+              <td> IR-0000001</td>
+              <td> System</td>
+              <td> Ext Standard Lifecycle</td>
+              <td> Product Name1 </td>
+              <td> Initial Query </td>
+              <td> EU </td>
+              <td> HA Interations </td>
+             </tr>
+             <tr>
+              <td> <input type="radio"> </td>
+              <td> <a href="form-view.html">EXR-0000001</a>  </td>
+              <td> IR-0000001</td>
+              <td> System</td>
+              <td> Ext Standard Lifecycle</td>
+              <td> Product Name1 </td>
+              <td> Initial Query </td>
+              <td> EU </td>
+              <td> HA Interations </td>
+             </tr>
+             <tr>
+              <td> <input type="radio"> </td>
+              <td> <a href="form-view.html">EXR-0000001</a>  </td>
+              <td> IR-0000001</td>
+              <td> System</td>
+              <td> Ext Standard Lifecycle</td>
+              <td> Product Name1 </td>
+              <td> Initial Query </td>
+              <td> EU </td>
+              <td> HA Interations </td>
+             </tr>
+             <tr>
+              <td> <input type="radio"> </td>
+              <td> <a href="form-view.html">EXR-0000001</a>  </td>
+              <td> IR-0000001</td>
+              <td> System</td>
+              <td> Ext Standard Lifecycle</td>
+              <td> Product Name1 </td>
+              <td> Initial Query </td>
+              <td> EU </td>
+              <td> HA Interations </td>
+             </tr>
+             <tr>
+              <td> <input type="radio"> </td>
+              <td> <a href="form-view.html">EXR-0000001</a>  </td>
+              <td> IR-0000001</td>
+              <td> System</td>
+              <td> Ext Standard Lifecycle</td>
+              <td> Product Name1 </td>
+              <td> Initial Query </td>
+              <td> EU </td>
+              <td> HA Interations </td>
+             </tr>
+             <tr>
+              <td> <input type="radio"> </td>
+              <td> <a href="form-view.html">EXR-0000001</a>  </td>
+              <td> IR-0000001</td>
+              <td> System</td>
+              <td> Ext Standard Lifecycle</td>
+              <td> Product Name1 </td>
+              <td> Initial Query </td>
+              <td> EU </td>
+              <td> HA Interations </td>
+             </tr>
+             <tr>
+              <td> <input type="radio"> </td>
+              <td> <a href="form-view.html">EXR-0000001</a>  </td>
+              <td> IR-0000001</td>
+              <td> System</td>
+              <td> Ext Standard Lifecycle</td>
+              <td> Product Name1 </td>
+              <td> Initial Query </td>
+              <td> EU </td>
+              <td> HA Interations </td>
+             </tr>
+  
+            </table>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+     
+      
+  </div>
+</content>
+</body>
+</html>
+
+
+
+
+
+
