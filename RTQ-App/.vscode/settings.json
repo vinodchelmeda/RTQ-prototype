@@ -3,20 +3,20 @@
         {
             "format": "expanded",
             "extensionName": ".css",
-            "savePath": "/css/"
+            "savePath": "/css"
         },
         {
             "extensionName": ".min.css",
             "format": "compressed",
-            "savePath": "/css/"
+            "savePath": "/css"
         }
     ],
     "liveSassCompile.settings.includeItems": [
-        "/scss/styles.scss",
+        "/scss/style.scss",
         
     ],
     "liveSassCompile.settings.excludeList": [
-      //  "/node_modules/**",
+        "/node_modules/**",
         "/.vscode/**"
     ],
     "liveSassCompile.settings.generateMap": false,
